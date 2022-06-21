@@ -30,7 +30,7 @@ public class ShopManagement {
 
     /**
      * Add a fruit to the fruits storage and ask user if they want to make an
-     * order
+     * order. If user answer yes, call shopping method.
      */
     public void addFruit() {
         System.out.println("------ADD FRUIT------");
@@ -49,7 +49,9 @@ public class ShopManagement {
     }
 
     /**
-     * View an order as a table
+     * View an order as a table, with or without customer name.<br>
+     * Table columns: Product (Product name), Quantity (Number of product
+     * ordered), Price (Per one product), Amount (Total price)
      *
      * @param order Order to view (with key as customer name and value as order
      * items)
@@ -92,7 +94,8 @@ public class ShopManagement {
     }
 
     /**
-     * Show all fruits as a table
+     * Show all fruits as a table. Table columns: No. (ID of fruit), Fruit Name,
+     * Origin, Price (Per fruit)
      */
     public void viewFruits() {
         System.out.println("List of Fruits:");
@@ -120,7 +123,8 @@ public class ShopManagement {
     }
 
     /**
-     * Perform shopping function (make an order)
+     * Perform shopping function.<br>
+     * Get inputs from user to create an order 
      */
     public void shopping() {
         ArrayList<Fruit> items = new ArrayList<>();//Store order items
@@ -129,7 +133,7 @@ public class ShopManagement {
                 custName; //Store customer name
         int quantity = 0; //Store quantity of fruit to buy
         boolean validQuant, //Checks if quantity is valid (enough fruits are available in storage)
-                continueOrder = false; //Checks if user want to choose more fruits
+                orderIncomplete = false; //Checks if user want to choose more fruits
 
         System.out.println("------SHOPPING------");
         viewFruits(); //View fruits before ordering
@@ -173,10 +177,10 @@ public class ShopManagement {
                     addOrder(custName, items); //Add order to storage
 
                     System.out.println("Order complete!"); //Inform user order successful
-                    continueOrder = false; //Exit function
+                    orderIncomplete = false; //Exit function
 
                 } else {
-                    continueOrder = true; //Continue choosing items
+                    orderIncomplete = true; //Continue choosing items
                     if (fruitDeleted) {//If a fruit is out of stock, show the table again
                         viewFruits();
                         System.out.println("(!)Notice: You can select with name or ID\n"
@@ -187,7 +191,7 @@ public class ShopManagement {
             } else { //If the fruit doesn't exist, inform user
                 System.out.println("Sorry, there is no fruit with that name or ID!");
             }
-        } while (continueOrder); //While user still want to choose items
+        } while (orderIncomplete); //While user still want to choose items
 
     }
 
@@ -294,7 +298,7 @@ public class ShopManagement {
     }
 
     /**
-     * Get a new fruit with information from user, information that will be
+     * Get a new fruit with information from user. Information that will be
      * required: name of fruit; price, amount available, origin of fruit.
      *
      * @return A fruit with the inputed information, and id calculated from
