@@ -33,7 +33,7 @@ public class LAB211_Long3 {
             System.out.println("2. View orders");
             System.out.println("3. Shopping (for buyer)");
             System.out.println("4. Exit");
-            menuChoice = util.getInt("\tPlease choose: ", "Error: Must be integer!", 1, 4);//Get menu choice
+            menuChoice = util.getInt("\tPlease choose: ", "Error: This must be an integer from 1 to 4!", 1, 4);//Get menu choice
 
             switch (menuChoice) {//Perform functions
                 case 1: //Create fruit
