@@ -124,7 +124,15 @@ public class ShopManagement {
 
     /**
      * Perform shopping function.<br>
-     * Get inputs from user to create an order 
+     * Get inputs from user to create an order and add to orders storage. Inputs
+     * required:<br>
+     * May repeat multiple times:<br>
+     * Fruit ID or Fruit name <br>
+     * Number of the fruit<br>
+     * Once:<br>
+     * Customer name<br>
+     * When getting ID or Fruit name, if it's the first try, function exits, if
+     * it's from second try on, keep asking for name or ID.
      */
     public void shopping() {
         ArrayList<Fruit> items = new ArrayList<>();//Store order items
